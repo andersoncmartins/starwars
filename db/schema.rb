@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_19_103008) do
+ActiveRecord::Schema.define(version: 2019_12_19_131751) do
 
   create_table "people", force: :cascade do |t|
     t.string "name"
@@ -25,6 +25,10 @@ ActiveRecord::Schema.define(version: 2019_12_19_103008) do
     t.string "url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "planet_id"
+    t.integer "specie_id"
+    t.index ["planet_id"], name: "index_people_on_planet_id"
+    t.index ["specie_id"], name: "index_people_on_specie_id"
   end
 
   create_table "planets", force: :cascade do |t|
@@ -56,6 +60,8 @@ ActiveRecord::Schema.define(version: 2019_12_19_103008) do
     t.string "url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "planet_id"
+    t.index ["planet_id"], name: "index_species_on_planet_id"
   end
 
   create_table "starships", force: :cascade do |t|

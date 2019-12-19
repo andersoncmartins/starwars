@@ -47,8 +47,10 @@ class Utils
     end
   end
 
+  private
+
   def self.count(type)
-    self.response(type)['count']
+    self.response(type, '1')['count']
   end
 
   def self.response(type, page)
