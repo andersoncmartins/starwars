@@ -16,3 +16,6 @@
 - Models: bundle exec rspec spec/models
 - Controllers: bundle exec rspec spec/controllers
 
+*OBSERVAÇÕES
+- Eu pesquisei um pouco sobre a gem 'Swapi', mas resolvi não utilizá-lo por ser uma gem um pouco antiga.
+- Não respeitava alguns dos propósitos. Ex: get_all people retornava apenas a primeira página de pessoas.
