@@ -1,6 +1,6 @@
 class Specie < ApplicationRecord
-  belong_to :planet
+  belongs_to :planet, optional: true
   has_many :people
 
-  
+  validates :name, presence: true, uniqueness: true
 end

@@ -19,7 +19,7 @@ class Utils
     pages = self.pages(type)
     pages.each do |page|
       results = self.response(type, page)['results']
-      results.each do |r|      
+      results.each do |r|
         Planet.create(name: r['name'], rotation_period: r['rotation_period'].to_i, orbital_period: r['orbital_period'].to_i, diameter: r['diameter'].to_i, climate: r['climate'], gravity: r['gravity'], terrain: r['terrain'], surface_water: r['surface_water'].to_i, population: r['population'].to_i, created_at: r['created'], updated_at: r['edited'], url: r['url'])
       end
     end
