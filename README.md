@@ -8,14 +8,14 @@
  
 * Instruções para iniciar projeto:
 - bundle install
+AND
+- rails db:create
 - rails db:migrate
 - rails db:seed
+OR 
+- rails db:setup
 
 * Como rodar os Testes:
 - Geral: bundle exec rspec spec
 - Models: bundle exec rspec spec/models
 - Controllers: bundle exec rspec spec/controllers
-
-*OBSERVAÇÕES
-- Eu pesquisei um pouco sobre as gems do Star Wars para ruby, mas resolvi não utilizá-los. Achei as gems um pouco antigas.
-- Algumas gems não respeitavam alguns dos propósitos. Ex: A gem 'swapi' com o método get_all people retornava apenas a primeira página de pessoas.
