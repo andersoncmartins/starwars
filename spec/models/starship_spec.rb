@@ -3,11 +3,11 @@ require 'rails_helper'
 RSpec.describe Starship, type: :model do
   describe '#name' do 
     it 'should not valid if name is blank' do
-      expect(Starship.create(name: '', url: 'https://swapi.co/api/starships/1')).to_not be_valid
+      expect(build(:starship, :blank_name)).to_not be_valid
     end
     
     it 'should not valid if name is null' do
-      expect(Starship.create(name: nil, url: 'https://swapi.co/api/starships/1')).to_not be_valid
+      expect(build(:starship, :null_name)).to_not be_valid
     end
 
     it 'should not valid if name is not unique' do

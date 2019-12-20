@@ -1,54 +1,16 @@
 <p id="notice"><%= notice %></p>
+<div class="row">
+  
+</div>
+<div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @person.name %>
-</p>
+</div>
 
-<p>
-  <strong>Height:</strong>
-  <%= @person.height %>
-</p>
-
-<p>
-  <strong>Mass:</strong>
-  <%= @person.mass %>
-</p>
-
-<p>
-  <strong>Hair color:</strong>
-  <%= @person.hair_color %>
-</p>
-
-<p>
-  <strong>Skin color:</strong>
-  <%= @person.skin_color %>
-</p>
-
-<p>
-  <strong>Eye color:</strong>
-  <%= @person.eye_color %>
-</p>
-
-<p>
-  <strong>Birth year:</strong>
-  <%= @person.birth_year %>
-</p>
-
-<p>
-  <strong>Gender:</strong>
-  <%= @person.gender %>
-</p>
-
-<p>
-  <strong>Homeworld:</strong>
-  <%= @person.homeworld %>
-</p>
-
-<p>
-  <strong>Url:</strong>
-  <%= @person.url %>
-</p>
-
-<%= link_to 'Edit', edit_person_path(@person) %> |
-<%= link_to 'Back', people_path %>
+<div class="card">
+  <%= image_tag 'logo-star-wars.png', class: 'card-img-top' %>
+  <div class="card-body">
+    <h5 class="card-title"><%= @person.name %></h5>
+    <p class="card-text"><%= description(@person) %></p>
+    <%= link_to 'Voltar', people_path, class: "btn btn-primary" %>
+  </div>
+</div>

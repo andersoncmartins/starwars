@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_19_131751) do
+ActiveRecord::Schema.define(version: 2019_12_19_195905) do
 
   create_table "people", force: :cascade do |t|
     t.string "name"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2019_12_19_131751) do
     t.string "skin_color"
     t.string "eye_color"
     t.string "birth_year"
-    t.integer "gender"
+    t.string "gender"
     t.string "homeworld"
     t.string "url"
     t.datetime "created_at", precision: 6, null: false
@@ -29,6 +29,13 @@ ActiveRecord::Schema.define(version: 2019_12_19_131751) do
     t.integer "specie_id"
     t.index ["planet_id"], name: "index_people_on_planet_id"
     t.index ["specie_id"], name: "index_people_on_specie_id"
+  end
+
+  create_table "people_starships", force: :cascade do |t|
+    t.integer "person_id", null: false
+    t.integer "starship_id", null: false
+    t.index ["person_id"], name: "index_people_starships_on_person_id"
+    t.index ["starship_id"], name: "index_people_starships_on_starship_id"
   end
 
   create_table "planets", force: :cascade do |t|

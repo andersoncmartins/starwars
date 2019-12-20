@@ -17,5 +17,5 @@
 - Controllers: bundle exec rspec spec/controllers
 
 *OBSERVAÇÕES
-- Eu pesquisei um pouco sobre a gem 'Swapi', mas resolvi não utilizá-lo por ser uma gem um pouco antiga.
-- Não respeitava alguns dos propósitos. Ex: get_all people retornava apenas a primeira página de pessoas.
+- Eu pesquisei um pouco sobre as gems do Star Wars para ruby, mas resolvi não utilizá-los. Achei as gems um pouco antigas.
+- Algumas gems não respeitavam alguns dos propósitos. Ex: A gem 'swapi' com o método get_all people retornava apenas a primeira página de pessoas.

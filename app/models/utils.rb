@@ -7,9 +7,48 @@ class Utils
     pages = self.pages(type)
     pages.each do |page|
       results = self.response(type, page)['results']
-      planet_id = r['homeworld'].split('/').last
       results.each do |r|      
-        People.create(name: r['name'], height: r['height'].to_i, mass: r['hair_color'], skin_color: r['skin_color'], eye_color: r['eye_color'], birth_year: r['birth_year'], gender: r['gender'], homeworld: r['homeworld'], created_at: r['created'], updated_at: r['edited'], url: r['url'])
+        Person.create(name: r['name'], height: r['height'].to_i, mass: r['mass'].to_i, skin_color: r['skin_color'], eye_color: r['eye_color'], birth_year: r['birth_year'], gender: r['gender'], homeworld: r['homeworld'], created_at: r['created'], updated_at: r['edited'], url: r['url'])
+      end
+    end
+  end
+
+  def self.save_people_species
+    type = 'people'
+    pages = self.pages(type)
+    pages.each do |page|
+      results = self.response(type, page)['results']
+      results.each do |r|      
+        person = Person.find_by(name: r['name'])
+        specie = Specie.find_by(url: r['species'].first)
+        person.update(specie: specie)
+      end
+    end
+  end
+
+  def self.save_people_planets
+    type = 'people'
+    pages = self.pages(type)
+    pages.each do |page|
+      results = self.response(type, page)['results']
+      results.each do |r|      
+        person = Person.find_by(name: r['name'])
+        planet = Planet.find_by(url: r['homeworld'])
+        person.update(planet: planet)
+      end
+    end
+  end
+
+  def self.save_people_starships
+    type = 'people'
+    pages = self.pages(type)
+    pages.each do |page|
+      results = self.response(type, page)['results']
+      results.each do |r|      
+        person = Person.find_by(name: r['name'])
+        starships = Starship.where(url: r['starships'])
+        person.starships = starships
+        person.save
       end
     end
   end
@@ -31,7 +70,7 @@ class Utils
     pages.each do |page|
       results = self.response(type, page)['results']
       results.each do |r|      
-        Specie.create(name: r['name'], classification: r['classification'], desigination: r['designation'], average_height: r['average_height'], skin_colors: r['skin_colors'], hair_colors: r['hair_colors'], eye_colors: r['eye_colors'], average_lifespan: r['average_lifespan'], homeworld: r['homeworld'], created_at: r['created'], updated_at: r['edited'], url: r['url'])
+        specie = Specie.create(name: r['name'], classification: r['classification'], designation: r['designation'], average_height: r['average_height'], skin_colors: r['skin_colors'], hair_colors: r['hair_colors'], eye_colors: r['eye_colors'], average_lifespan: r['average_lifespan'], homeworld: r['homeworld'], created_at: r['created'], updated_at: r['edited'], url: r['url'])
       end
     end
   end
@@ -47,7 +86,7 @@ class Utils
     end
   end
 
-  private
+  # private   
 
   def self.count(type)
     self.response(type, '1')['count']
