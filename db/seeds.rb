@@ -7,3 +7,4 @@ Utils.save_all_species
 Utils.save_people_species
 Utils.save_people_planets
 Utils.save_people_starships
+Utils.save_planets_species
